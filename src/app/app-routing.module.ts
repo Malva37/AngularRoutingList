@@ -1,8 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { WorksComponent } from './pages/works/works.component';
+import { CenzorComponent } from './pages/works/cenzor/cenzor.component';
+import { UserlistComponent } from './pages/works/userlist/userlist.component';
+import { TasklistComponent } from './pages/works/tasklist/tasklist.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '',redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home',component: HomeComponent},
+  {path: 'works',component: WorksComponent,children:[
+    {path: 'cenzor',component: CenzorComponent},
+    {path: 'userlist',component: UserlistComponent},
+    {path: 'tasklist',component: TasklistComponent},
+
+
+  ]},
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
